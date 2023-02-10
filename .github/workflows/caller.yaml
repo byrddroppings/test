@@ -16,7 +16,7 @@ jobs:
       runs-on: 'ubuntu-latest'
       steps:
         - name: 'say hello'
-          uses: 'byrddroppings/shared-github-actions/echo@main'
+          uses: 'byrddroppings/github-actions-shared/echo@main'
           with:
             name: 'hawk'
       
