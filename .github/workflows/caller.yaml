@@ -17,8 +17,10 @@ jobs:
       steps:
         - id: set
           run: echo "dotnet-version=${{ env.dotnet-version }}" >> GITHUB_OUTPUT
-      outputs:
-        dotnet-version: ${{ steps.set.output.dotnet-version }}
+          outputs:
+            dotnet-version: ${{ steps.set.output.dotnet-version }}
+            
+        - run: echo "DOTNET VERSION ${{ steps.set.output.dotnet-version }}"
     
     call:      
       uses: ./.github/workflows/callee.yaml
