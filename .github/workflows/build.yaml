@@ -22,7 +22,7 @@ jobs:
   echo:
     runs-on: 'ubuntu-latest'
     steps:
-      run: echo ${{ env.PROJECT_FILE }}
+      - run: echo ${{ env.PROJECT_FILE }}
       
   build:
     if: ${{ false }}
