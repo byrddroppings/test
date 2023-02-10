@@ -17,8 +17,8 @@ jobs:
     name: 'start'
     runs-on: 'ubuntu-latest'
     steps:
-      name: 'ready'
-      run: echo "I'm ready!"
+      - name: 'ready'
+        run: echo "I'm ready!"
       
   build:
     name: 'build'
