@@ -11,6 +11,16 @@ jobs:
       runs-on: 'ubuntu-latest'
       steps:
         - run: echo "I'm ready"
+                        
+    hello:
+      runs-on: 'ubuntu-latest'
+      steps:
+        - name: 'say hello'
+          uses: 'byrddroppings/shared-github-actions/echo@main'
+          with:
+            name: 'hawk'
+      
+          
           
     setup:
       runs-on: 'ubuntu-latest'
