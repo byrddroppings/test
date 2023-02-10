@@ -13,6 +13,7 @@ env:
   ARTIFACT_NAME: ${{ github-repository }}/${{github.ref_name}}/${{ github.run_number }}
         
 jobs:
+  name: 'build and deploy'
   runs-on: 'ubuntu-latest'
   build:
     steps:
