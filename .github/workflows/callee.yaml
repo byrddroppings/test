@@ -2,10 +2,15 @@ name: 'callee'
 
 on:
   workflow_call:
-
+    inputs:
+      name:
+        type: string
+        required: yes
+        
 jobs:
   here:
     name: 'here'
     runs-on: 'ubuntu-latest'
     steps:
       - run: echo "I'm here!"
+      - run: echo "hello ${{ inputs.name }}"
