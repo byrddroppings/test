@@ -5,7 +5,7 @@ on:
     inputs:
       name:
         type: string
-        required: yes
+        required: true
         
 jobs:
   here:
