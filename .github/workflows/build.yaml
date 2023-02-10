@@ -13,9 +13,9 @@ env:
   ARTIFACT_NAME: ${{ github-repository }}/${{github.ref_name}}/${{ github.run_number }}
         
 jobs:
-  name: 'build and deploy'
-  runs-on: 'ubuntu-latest'
   build:
+    name: 'build'
+    runs-on: 'ubuntu-latest'
     steps:
       - name: 'install dotnet ${{ env.DOTNET_VERSION }}'
         uses: actions/setup-dotnet@v3
