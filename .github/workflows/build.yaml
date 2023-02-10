@@ -19,7 +19,13 @@ env:
   OUTPUT_FOLDER: ${{ github.workspace }}/output
 
 jobs:
+  echo:
+    runs-on: 'ubuntu-latest'
+    steps:
+      run: echo ${{ env.PROJECT_FILE }}
+      
   build:
+    if: ${{ false }}
     runs-on: 'ubuntu-latest'
     steps:
       - name: 'install dotnet ${{ inputs.DOTNET_VERSION }}'

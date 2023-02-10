@@ -25,8 +25,4 @@ jobs:
     needs: 'start'
     runs-on: 'ubuntu-latest'
     uses: './.github/workflows/build.yaml'
-    with:
-      DOTNET_VERSION: env.DOTNET_VERSION
-      PROJECT_FILE: env.PROJECT_FILE
-      ARTIFACT_NAME: env.ARTIFACT_NAME
       
