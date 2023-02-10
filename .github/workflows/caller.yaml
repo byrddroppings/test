@@ -5,6 +5,7 @@ on:
     
 jobs:
     ready:
+      runs-on: 'ubuntu-latest'
       steps:
         - run: echo "I'm ready"
     
