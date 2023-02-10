@@ -8,4 +8,4 @@ jobs:
     name: 'here'
     runs-on: 'ubuntu-latest'
     steps:
-      - run echo "I'm here!"
+      - run: echo "I'm here!"
