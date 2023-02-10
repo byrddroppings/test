@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - mainx
+      - main
 
 env:
   DOTNET_VERSION: '7.x'
@@ -13,8 +13,16 @@ env:
   ARTIFACT_NAME: ${{github.ref_name}}-${{ github.run_number }}
         
 jobs:
+  start:
+    name: 'start'
+    runs-on 'ubuntu-latest'
+    steps:
+      name: 'ready'
+      run: echo "I'm ready!"
+      
   build:
     name: 'build'
+    needs: 'start'
     runs-on: 'ubuntu-latest'
     steps:
       uses: 'byrddroppings/test/build@main'
