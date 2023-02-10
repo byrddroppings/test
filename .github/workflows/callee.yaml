@@ -3,7 +3,7 @@ name: 'callee'
 on:
   workflow_call:
     inputs:
-      name:
+      dotnet-version:
         type: string
         required: true
         
@@ -12,5 +12,8 @@ jobs:
     name: 'here'
     runs-on: 'ubuntu-latest'
     steps:
-      - run: echo "I'm here!"
-      - run: echo "hello ${{ inputs.name }}"
+      - name: 'install dotnet v${{ inputs.dotnet-version }}'
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
+          

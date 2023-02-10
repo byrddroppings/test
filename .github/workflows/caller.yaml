@@ -3,6 +3,9 @@ name: caller
 on:
   workflow_dispatch:
     
+env:
+  dotnet-version: '7.x'
+    
 jobs:
     ready:
       runs-on: 'ubuntu-latest'
@@ -12,6 +15,6 @@ jobs:
     call:      
       uses: ./.github/workflows/callee.yaml
       with:
-        name: 'world'
+        dotnet-version: ${{ env.dotnet-version }}
       
       
