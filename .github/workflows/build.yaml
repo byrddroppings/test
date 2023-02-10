@@ -18,25 +18,26 @@ on:
 env:
   OUTPUT_FOLDER: ${{ github.workspace }}/output
 
-runs:
-  using: "composite"
-  steps:
-    - name: 'install dotnet ${{ inputs.DOTNET_VERSION }}'
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '${{ inputs.DOTNET_VERSION }}'
-
-    - name: 'checkout ${{ github.repository }} (${{ github.ref_name }})'
-      uses: actions/checkout@v3
-
-    - name: 'build'
-      run: 'dotnet build --configuration Release --output ${{ env.OUTPUT_FOLDER }} ${{ inputs.PROJECT_FILE }}'
-
-    - name: 'upload'
-      uses: actions/upload-artifact@v3
-      if: ${{ false }}
-      with:
-        name: '${{ env.ARTIFACT_NAME }}'
-        path: '${{ env.OUTPUT_FOLDER }}'
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: 'install dotnet ${{ inputs.DOTNET_VERSION }}'
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '${{ inputs.DOTNET_VERSION }}'
+  
+      - name: 'checkout ${{ github.repository }} (${{ github.ref_name }})'
+        uses: actions/checkout@v3
+  
+      - name: 'build'
+        run: 'dotnet build --configuration Release --output ${{ env.OUTPUT_FOLDER }} ${{ inputs.PROJECT_FILE }}'
+  
+      - name: 'upload'
+        uses: actions/upload-artifact@v3
+        if: ${{ false }}
+        with:
+          name: '${{ env.ARTIFACT_NAME }}'
+          path: '${{ env.OUTPUT_FOLDER }}'
     
     
