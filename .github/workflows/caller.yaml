@@ -1,0 +1,11 @@
+name: caller
+
+on:
+  workflow_dispatch:
+    
+jobs:
+  ready:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - run: echo "I'm ready!"
+      - uses: ./.github/workflows/callee.yaml

@@ -1,0 +1,10 @@
+name: 'callee'
+
+on:
+  workflow_call:
+
+jobs:
+  here:
+    name: 'here'
+    steps:
+      - run echo "I'm here!"
