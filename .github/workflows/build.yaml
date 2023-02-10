@@ -1,20 +1,19 @@
 name: 'build'
 
 on:
-  workflow_dispatch:
-    
-inputs:
-  DOTNET_VERSION:
-    type: string
-    required: true
-    
-  PROJECT_FILE:
-    type: string
-    required: true
-    
-  ARTIFACT_NAME:
-    type: string
-    required: true
+  workflow_call:    
+    inputs:
+      DOTNET_VERSION:
+        type: string
+        required: true
+        
+      PROJECT_FILE:
+        type: string
+        required: true
+        
+      ARTIFACT_NAME:
+        type: string
+        required: true
     
 env:
   OUTPUT_FOLDER: ${{ github.workspace }}/output
@@ -27,7 +26,7 @@ runs:
       with:
         dotnet-version: '${{ inputs.DOTNET_VERSION }}'
 
-    - name: 'download ${{ github.repository }} (${{ github.ref_name }})'
+    - name: 'checkout ${{ github.repository }} (${{ github.ref_name }})'
       uses: actions/checkout@v3
 
     - name: 'build'

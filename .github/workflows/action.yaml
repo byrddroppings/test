@@ -25,6 +25,9 @@ jobs:
     needs: 'start'
     runs-on: 'ubuntu-latest'
     steps:
+      - name: 'checkout ${{ github.repository }} (${{ github.ref_name }})'
+        uses: actions/checkout@v3
+
       - name: 'build'
         uses: 'byrddroppings/test/build@main'
         with:
