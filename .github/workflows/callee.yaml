@@ -6,5 +6,6 @@ on:
 jobs:
   here:
     name: 'here'
+    runs-on: 'ubuntu-latest'
     steps:
       - run echo "I'm here!"
