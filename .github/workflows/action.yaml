@@ -24,14 +24,9 @@ jobs:
     name: 'build'
     needs: 'start'
     runs-on: 'ubuntu-latest'
-    steps:
-      - name: 'checkout ${{ github.repository }} (${{ github.ref_name }})'
-        uses: actions/checkout@v3
-
-      - name: 'build'
-        uses: 'byrddroppings/test/build@main'
-        with:
-          DOTNET_VERSION: env.DOTNET_VERSION
-          PROJECT_FILE: env.PROJECT_FILE
-          ARTIFACT_NAME: env.ARTIFACT_NAME
+    uses: 'byrddroppings/test/build@main'
+    with:
+      DOTNET_VERSION: env.DOTNET_VERSION
+      PROJECT_FILE: env.PROJECT_FILE
+      ARTIFACT_NAME: env.ARTIFACT_NAME
       
