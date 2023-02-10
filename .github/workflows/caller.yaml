@@ -19,6 +19,8 @@ jobs:
       steps:
         - id: set
           run: echo "dotnet-version=${{ env.dotnet-version }}" >> GITHUB_OUTPUT
+        - id: echo
+          run: echo "${{ toJSON(steps.set.output) }}"
 
     echo:
       runs-on: 'ubuntu-latest'
