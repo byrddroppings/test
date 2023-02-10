@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     
 env:
-  dotnet-version: '7.x'
+  dotnet_version: '7.x'
     
 jobs:
     ready:
@@ -15,6 +15,6 @@ jobs:
     call:      
       uses: ./.github/workflows/callee.yaml
       with:
-        dotnet-version: ${{ env.dotnet-version }}
+        dotnet-version: ${{ env.dotnet_version }}
       
       
