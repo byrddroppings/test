@@ -1,35 +1,40 @@
 name: 'build'
 
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - mainx
-
+inputs:
+  DOTNET_VERSION:
+    type: string
+    required: true
+    
+  PROJECT_FILE:
+    type: string
+    required: true
+    
+  ARTIFACT_NAME:
+    type: string
+    required: true
+    
 env:
-  DOTNET_VERSION: '7.x'
-  PROJECT_FILE: ${{ github.workspace }}/KenByrd.TestFuncs/KenByrd.TestFuncs.csproj
   OUTPUT_FOLDER: ${{ github.workspace }}/output
-  ARTIFACT_NAME: ${{github.ref_name}}-${{ github.run_number }}
-        
-jobs:
-  build:
-    name: 'build'
-    runs-on: 'ubuntu-latest'
-    steps:
-      - name: 'install dotnet ${{ env.DOTNET_VERSION }}'
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '${{ env.DOTNET_VERSION }}'
 
-      - name: 'download ${{ github.repository }} (${{ github.ref_name }})'
-        uses: actions/checkout@v3
+runs:
+  using: "composite"
+  steps:
+    - name: 'install dotnet ${{ inputs.DOTNET_VERSION }}'
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '${{ inputs.DOTNET_VERSION }}'
 
-      - name: 'build'
-        run: 'dotnet build --configuration Release --output ${{ env.OUTPUT_FOLDER }} ${{ env.PROJECT_FILE }}'
+    - name: 'download ${{ github.repository }} (${{ github.ref_name }})'
+      uses: actions/checkout@v3
 
-      - name: 'upload'
-        uses: actions/upload-artifact@v3
-        with:
-          name: '${{ env.ARTIFACT_NAME }}'
-          path: '${{ env.OUTPUT_FOLDER }}'
+    - name: 'build'
+      run: 'dotnet build --configuration Release --output ${{ env.OUTPUT_FOLDER }} ${{ inputs.PROJECT_FILE }}'
+
+    - name: 'upload'
+      uses: actions/upload-artifact@v3
+      if: ${{ false }}
+      with:
+        name: '${{ env.ARTIFACT_NAME }}'
+        path: '${{ env.OUTPUT_FOLDER }}'
+    
+    
