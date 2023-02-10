@@ -14,13 +14,16 @@ jobs:
           
     setup:
       runs-on: 'ubuntu-latest'
+      outputs:
+        dotnet-version: ${{ steps.set.output.dotnet-version }}
       steps:
         - id: set
           run: echo "dotnet-version=${{ env.dotnet-version }}" >> GITHUB_OUTPUT
-          outputs:
-            dotnet-version: ${{ steps.set.output.dotnet-version }}
-            
-        - run: echo "DOTNET VERSION ${{ steps.set.output.dotnet-version }}"
+
+    echo:
+      runs-on: 'ubuntu-latest'
+      steps:
+        - run: echo "DOTNET VERSION ${{ needs.setup.output.dotnet-version }}"
     
     call:      
       uses: ./.github/workflows/callee.yaml
