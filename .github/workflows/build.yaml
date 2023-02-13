@@ -6,12 +6,11 @@ on:
       - main
 
 env:
-  runner: 'ubuntu-latest'
   dotnet-version: '7.x'
 
 jobs:
   build:
-    runs-on: ${{ env.runner }}
+    runs-on: 'ubuntu-latest'
     steps:
       - run: echo '${{ env.dotnet-version }}'
 
