@@ -2,6 +2,9 @@ name: build
 
 on:
   release:
+    - prereleased
+    - released
+    
   workflow_dispatch:
 
 jobs:
