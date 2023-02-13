@@ -10,6 +10,18 @@ jobs:
     steps:
       - run: echo '${{ toJSON(github) }}'
 
+  deploy-to-staging:
+    if: ${{ github.event.action = "prereleased"}}
+    runs-on: 'ubuntu-latest'
+    steps:
+      - run: echo 'STAGING RELEASE'
+
+  deploy-to-production:
+    if: ${{ github.event.action = "released"}}
+    runs-on: 'ubuntu-latest'
+    steps:
+      - run: echo 'PRODUCTION RELEASE'
+
 
 
   
