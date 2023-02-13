@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+  release:
+
 env:
   dotnet-version: '7.x'
 
