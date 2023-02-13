@@ -1,49 +1,19 @@
 name: 'build'
 
 on:
-  workflow_call:    
-    inputs:
-      DOTNET_VERSION:
-        type: string
-        required: true
-        
-      PROJECT_FILE:
-        type: string
-        required: true
-        
-      ARTIFACT_NAME:
-        type: string
-        required: true
-    
+  push:
+    branches:
+      - main
+
 env:
-  OUTPUT_FOLDER: ${{ github.workspace }}/output
+  runner: 'ubuntu-latest'
+  dotnet-version: '7.x'
 
 jobs:
-  echo:
-    runs-on: 'ubuntu-latest'
-    steps:
-      - run: echo ${{ env.PROJECT_FILE }}
-      
   build:
-    if: ${{ false }}
-    runs-on: 'ubuntu-latest'
+    runs-on: ${{ env.runer }}
     steps:
-      - name: 'install dotnet ${{ inputs.DOTNET_VERSION }}'
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '${{ inputs.DOTNET_VERSION }}'
+      run: echo '${{ env.dotnet-version }}'
+
+
   
-      - name: 'checkout ${{ github.repository }} (${{ github.ref_name }})'
-        uses: actions/checkout@v3
-  
-      - name: 'build'
-        run: 'dotnet build --configuration Release --output ${{ env.OUTPUT_FOLDER }} ${{ inputs.PROJECT_FILE }}'
-  
-      - name: 'upload'
-        uses: actions/upload-artifact@v3
-        if: ${{ false }}
-        with:
-          name: '${{ env.ARTIFACT_NAME }}'
-          path: '${{ env.OUTPUT_FOLDER }}'
-    
-    
