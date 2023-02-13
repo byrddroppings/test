@@ -11,5 +11,5 @@ jobs:
   deploy:
     runs-on: 'ubuntu-latest'
     steps:
-      - run: echo '${{ env.dotnet-version }}'
+      - run: echo '${{ toJSON(github) }}'
 
