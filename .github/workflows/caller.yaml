@@ -11,6 +11,6 @@ jobs:
       runs-on: 'ubuntu-latest'
       steps:
         - run: echo ${{ env.dotnet-version }}
-        - run: echo $${{ vars.dotnet-version }}
+        - run: echo ${{ vars.dotnet-version }}
           
           
