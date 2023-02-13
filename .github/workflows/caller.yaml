@@ -10,36 +10,7 @@ jobs:
     ready:
       runs-on: 'ubuntu-latest'
       steps:
-        - run: echo "I'm ready"
-                        
-    hello:
-      runs-on: 'ubuntu-latest'
-      steps:
-        - name: 'say hello'
-          uses: 'byrddroppings/github-actions-shared/echo@main'
-          with:
-            name: 'hawk'
-      
+        - run: echo ${{ env.dotnet-version }}
+        - run: echo $${{ vars.dotnet-version }}
           
           
-    setup:
-      runs-on: 'ubuntu-latest'
-      outputs:
-        dotnet-version: ${{ steps.set.output.dotnet-version }}
-      steps:
-        - id: set
-          run: echo "dotnet-version=${{ env.dotnet-version }}" >> GITHUB_OUTPUT
-        - id: echo
-          run: echo "${{ toJSON(steps.set.output) }}"
-
-    echo:
-      runs-on: 'ubuntu-latest'
-      steps:
-        - run: echo "DOTNET VERSION ${{ needs.setup.output.dotnet-version }}"
-    
-    call:      
-      uses: ./.github/workflows/callee.yaml
-      with:
-        dotnet-version: ${{ needs.setup.outputs.dotnet-version }}
-      
-      
