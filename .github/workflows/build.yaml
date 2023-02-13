@@ -11,7 +11,7 @@ env:
 
 jobs:
   build:
-    runs-on: ${{ env.runer }}
+    runs-on: ${{ env.runner }}
     steps:
       - run: echo '${{ env.dotnet-version }}'
 
