@@ -31,7 +31,7 @@ jobs:
       - name: setenvironment
         run: echo "environment=${{ env.environment }}" >> $GITHUB_OUTPUT
         
-      - run: echo "${{ toJSON(steps.setenvironment) }}"
+      - run: echo "${{ toJSON(steps.setenvironment.output) }}"
         
       - run: echo "output environment = ${{ steps.setenvironment.outputs.environment }}"
             
