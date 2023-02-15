@@ -30,6 +30,8 @@ jobs:
         
       - name: set-environment
         run: echo "environment=${{ env.environment }}" >> $GITHUB_OUTPUT
+        
+      - run: echo "output environment = ${{ steps.set-environment.outputs.environment }}"
             
       - run: echo 'environment = ${{ env.environment }}'
 
