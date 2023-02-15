@@ -27,3 +27,4 @@ jobs:
         run: echo "environment=playground" >> $GITHUB_ENV
             
       - run: echo 'environment = ${{ env.environment }}'
+        environment: ${{ env.environment }}
