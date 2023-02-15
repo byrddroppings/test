@@ -23,7 +23,8 @@ jobs:
           - playground
           - staging
     steps:
-      - run: echo "deploying to ${{ matrix.environment }}"
+      - if: inputs.deploy-to-${{ matrix.environment }}
+        run: echo "deploying to ${{ matrix.environment }}"
             
   setup:
     runs-on: ubuntu-latest
