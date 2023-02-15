@@ -1,0 +1,28 @@
+name: 'test'
+
+on:
+  push:
+    - branches: main
+      
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: choice
+        options:
+          - playground
+          - test
+          - sandbox
+          - production
+
+jobs:
+  test:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - run: |
+          if ['${{ github.event_name }}' == 'workflow_dispatch'] then 
+            echo 'environment=${{ inputs.environment }}' >> $GITHUB_ENV
+          else
+            echo 'environment=playground' >> $GITHUB_ENV          
+          fi
+      - run: echo 'environment = ${{ env.environment }}'
