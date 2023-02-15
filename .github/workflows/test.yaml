@@ -33,7 +33,7 @@ jobs:
                 
       - run: echo "environment = ${{ steps.setup-step.outputs.environment }}"
         
-      - run: echo "${{ toJSON(steps.setup-step) }}"
+      - run: echo "${{ toJSON(steps) }}"
 
   deploy:
     runs-on: ubuntu-latest
