@@ -20,7 +20,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
-      environment: ${{ steps.set-environment.outputs.environment }}
+      environment: ${{ steps.setenvironment.outputs.environment }}
     steps:
       - if: github.event_name == 'workflow_dispatch'
         run: echo "environment=${{ inputs.environment }}" >> $GITHUB_ENV
@@ -28,12 +28,12 @@ jobs:
       - if: github.event_name != 'workflow_dispatch'
         run: echo "environment=playground" >> $GITHUB_ENV
         
-      - name: set-environment
+      - name: setenvironment
         run: echo "environment=${{ env.environment }}" >> $GITHUB_OUTPUT
         
-      - run: echo "${{ toJSON(steps.set-environment) }}"
+      - run: echo "${{ toJSON(steps.setenvironment) }}"
         
-      - run: echo "output environment = ${{ steps.set-environment.outputs.environment }}"
+      - run: echo "output environment = ${{ steps.setenvironment.outputs.environment }}"
             
       - run: echo 'environment = ${{ env.environment }}'
 
