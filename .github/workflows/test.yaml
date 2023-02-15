@@ -41,4 +41,8 @@ jobs:
     steps:
       - run: 'echo "deploying to environment: ${{ needs.setup.outputs.environment }}"'
         
-        
+  test:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - run: 'echo "running tests against environment: ${{ needs.setup.outputs.environment }}"'
