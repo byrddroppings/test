@@ -12,9 +12,7 @@ on:
         type: choice
         options:
           - playground
-          - test
-          - sandbox
-          - production
+          - staging
 
 jobs:
   setup:
