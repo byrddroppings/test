@@ -23,8 +23,7 @@ jobs:
           - playground
           - staging
         exclude:
-          - environment: ${{ !inputs.deploy-to-playground && 'dummy' || 'playground' }}
-          - environment: ${{ !inputs.deploy-to-staging && 'dummy' || 'staging' }}
+          - environment: playground
     steps:
       - if: inputs.deploy-to-${{ matrix.environment }}
         run: echo "deploy to ${{ matrix.environment }}"
