@@ -47,3 +47,4 @@ jobs:
     environment: ${{ needs.setup.outputs.environment }}
     steps:
       - run: 'echo "running tests against environment: ${{ needs.setup.outputs.environment }}"'
+      - run: 'echo my_secret = ${{ secrets.my_secret }}'
