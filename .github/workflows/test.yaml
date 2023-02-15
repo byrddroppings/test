@@ -29,7 +29,7 @@ jobs:
         run: echo "environment=playground" >> $GITHUB_ENV
         
       - id: setup-step
-        run: echo "environment=${{ env.environment" >> $GITHUB_OUTPUT
+        run: echo "environment=${{ env.environment }}" >> $GITHUB_OUTPUT
                 
       - run: echo "environment = ${{ steps.setup-step.outputs.environment }}"
         
