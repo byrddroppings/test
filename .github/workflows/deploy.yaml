@@ -1,15 +1,15 @@
 name: 'deploy'
 
 on:
-  workflow_run:
-    workflows:
-      - build
-    types:
-      - completed
-
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        required: true
+        
 jobs:
   deploy:
     runs-on: 'ubuntu-latest'
     steps:
-      - run: echo '${{ toJSON(github) }}'
+      - run: echo '${{ toJSON(inputs) }}'
 
