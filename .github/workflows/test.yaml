@@ -7,8 +7,9 @@ on:
         required: true
         type: choice
         options:
-          - ["playground", "test"]
-          - ["staging"]
+          - playground
+          - test
+          - staging
 
 jobs:    
   setup:
