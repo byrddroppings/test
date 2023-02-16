@@ -1,18 +1,14 @@
 name: 'test'
 
 on:
-  push:
-    branches: 
-      - main
-      
   workflow_dispatch:
     inputs:
       environment:
         required: true
         type: choice
         options:
-          - [playground, test]
-          - [staging]
+          - ["playground", "test"]
+          - ["staging"]
 
 jobs:    
   setup:
