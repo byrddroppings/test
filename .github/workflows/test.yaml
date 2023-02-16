@@ -38,6 +38,6 @@ jobs:
     needs: setup
     strategy:
       matrix:
-        environment: ${{ fromJSON(needs.setup.outputs.environment }}
+        environment: ${{ fromJson(needs.setup.outputs.environment }}
     steps:
       - run: 'echo "deploying to environment: ${{ matrix.environment }}"'
