@@ -11,8 +11,8 @@ on:
         required: true
         type: choice
         options:
-          - playground
-          - staging
+          - [playground, test]
+          - [staging]
 
 jobs:    
   setup:
